@@ -13,6 +13,9 @@ public class AnimScript : MonoBehaviour {
     public GameObject spellParticle;
     bool playerHasDied;
 
+    public GameObject Audio_Sword;
+    public GameObject Audio_Spell;
+
 	// Use this for initialization
 	void Start () {
      
@@ -31,8 +34,8 @@ public class AnimScript : MonoBehaviour {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|Slash1") || animator.GetCurrentAnimatorStateInfo(0).IsName("Armature|Spell")) {
             //Debug.Log("Nyyt soi attack tai spell");
             if ( animator.GetCurrentAnimatorStateInfo(0).normalizedTime > 0.9f ) {
-                animator.SetBool("Attack", false);
-                animator.SetBool("Spell", false);
+                //animator.SetBool("Attack", false);    //animator statemachine hoitaa nämä nykyään
+                //animator.SetBool("Spell", false);     //animator statemachine hoitaa nämä nykyään
                 book.GetComponent<Animator>().SetBool("Open", false);
                 GetComponentInParent<playerScript>().enableControls(true);
                 sword.GetComponent<SphereCollider>().enabled = false;
@@ -48,13 +51,19 @@ public class AnimScript : MonoBehaviour {
             GetComponentInParent<playerScript>().spellCast();
         }
 
-        if (Input.GetButton("Fire1")) {
+        if (Input.GetButton("Fire1") && !animator.GetBool("Spell") && !animator.GetBool("Attack")) {
+
+            Instantiate(Audio_Sword, transform.position, transform.rotation);
+
             animator.SetBool("Attack", true);
+
             GetComponentInParent<playerScript>().stopMovement();
             GetComponentInParent<playerScript>().enableControls(false);
             sword.GetComponent<SphereCollider>().enabled = true;
         }
         if (Input.GetButtonDown("Fire2") && !animator.GetBool("Spell") && !animator.GetBool("Attack") ) {
+
+            Instantiate(Audio_Spell, transform.position, transform.rotation);
 
             //if (!animator.GetBool("Spell")) {   //Run only once when spellcast starts
                 
