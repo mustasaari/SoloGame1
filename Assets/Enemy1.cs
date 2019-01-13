@@ -27,9 +27,10 @@ public class Enemy1 : MonoBehaviour {
     int rimpuilu;
 
     Animator animator;
+    public GameObject Audio_Splat;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         rb = GetComponent<Rigidbody>();
         leftEye = this.gameObject.transform.GetChild(0).gameObject;
         rightEye = this.gameObject.transform.GetChild(1).gameObject;
@@ -230,6 +231,10 @@ public class Enemy1 : MonoBehaviour {
         Debug.Log("OnTrigger");
         if (other.gameObject.tag == "Sword") {
             animator.SetBool("Death", true);
+            if (isAlive) {
+                Instantiate(Audio_Splat, transform.position, transform.rotation);
+            }
+
             isAlive = false;
             //GetComponent<BoxCollider>().enabled = false;
             //rb.isKinematic = true;

@@ -12094,6 +12094,18 @@ Prefab:
       propertyPath: cameraRightEye
       value: 
       objectReference: {fileID: 339670353}
+    - target: {fileID: 114800377387131840, guid: 4f74a33aae9abdf48bef99d517a6e358,
+        type: 2}
+      propertyPath: Audio_Sword
+      value: 
+      objectReference: {fileID: 1369638262763460, guid: 085a9f72e7b607543be3048b371ffefc,
+        type: 2}
+    - target: {fileID: 114800377387131840, guid: 4f74a33aae9abdf48bef99d517a6e358,
+        type: 2}
+      propertyPath: Audio_Spell
+      value: 
+      objectReference: {fileID: 1657855640298166, guid: 33b2c2b6256d4b94da38ba7a13724ac8,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f74a33aae9abdf48bef99d517a6e358, type: 2}
   m_IsPrefabParent: 0

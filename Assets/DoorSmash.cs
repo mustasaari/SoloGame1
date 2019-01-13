@@ -12,10 +12,13 @@ public class DoorSmash : MonoBehaviour {
     public bool spawnCheese;
     GameObject Audio_Bum;
 
+    private int hitPoints;
+
 	// Use this for initialization
 	void Start () {
         entropy = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
         Audio_Bum = (GameObject) Resources.Load("Audio_Bum", typeof(GameObject));
+        hitPoints = 50;
     }
 	
 	// Update is called once per frame
@@ -43,6 +46,7 @@ public class DoorSmash : MonoBehaviour {
             GetComponent<Rigidbody>().isKinematic = false;
             GetComponent<Rigidbody>().AddForce((transform.position - other.gameObject.transform.position) *2f, ForceMode.Impulse);
             Instantiate(Audio_Bum, transform.position, transform.rotation);
+            reduceHP();
         }
     }
 
@@ -69,5 +73,13 @@ public class DoorSmash : MonoBehaviour {
 
     public void playSound() {
         Instantiate(Audio_Bum, transform.position, transform.rotation);
+        reduceHP();
+    }
+
+    public void reduceHP() {
+        hitPoints--;
+        if (hitPoints < 1) {
+            Destroy(gameObject);
+        }
     }
 }
