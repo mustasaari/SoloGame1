@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static int health = 100;
+
     private static bool gameStart = true;
 
     private void Start() {
@@ -17,4 +18,5 @@ public class GameManager : MonoBehaviour {
 
 
     }
+
 }

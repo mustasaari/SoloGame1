@@ -246,6 +246,7 @@ public class Enemy1 : MonoBehaviour {
         if (isAlive) {
             if (collision.gameObject.tag == "Player") {
                 collision.gameObject.GetComponent<playerScript>().takeDamage(1);
+                collision.gameObject.GetComponent<playerScript>().rotateTowards(transform);
             }
         }
 

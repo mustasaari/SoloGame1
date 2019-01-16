@@ -22,6 +22,8 @@ public class playerScript : MonoBehaviour {
     Vector3 cameraLeftEyePos;
     Vector3 cameraRightEyePos;
 
+    int healing;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -33,6 +35,9 @@ public class playerScript : MonoBehaviour {
 
         cameraRightEyePos = new Vector3(12f , 5.5f, 0f);
         cameraLeftEyePos = new Vector3(0f, 5.5f, 12f);
+
+        healing = 0;
+        InvokeRepeating("healer", 1f, 0.2f);
 	}
 
     // Update is called once per frame
@@ -64,12 +69,6 @@ public class playerScript : MonoBehaviour {
             }
             //transform.rotation = Quaternion.LookRotation(rb.velocity);
             if (rb.velocity.magnitude > 0.001f) {
-                //if (rb.velocity.x != 0) {
-                //lookDirectionVector.x = rb.velocity.x;
-                //}
-                //if (rb.velocity.z != 0) {
-                //lookDirectionVector.z = rb.velocity.z;
-                //}
                 lookDirectionVector.x = rb.velocity.x;
                 lookDirectionVector.z = rb.velocity.z;
 
@@ -135,5 +134,25 @@ public class playerScript : MonoBehaviour {
     public void takeDamage(int x) {
         animator.SetBool("Damage", true);
         GameManager.health = GameManager.health - x;
+    }
+
+    public void rotateTowards (Transform target) {
+        lookDirectionVector.x = target.position.x -transform.position.x;
+        lookDirectionVector.z = target.position.z -transform.position.z;
+
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 12f);
+    }
+
+    public void healer() {
+        if (healing > 0 && GameManager.health < 100) {
+            GameManager.health++;
+        }
+        if (healing > 0) {
+            healing--;
+        }
+    }
+
+    public void setHealing(int amount) {
+        healing += amount;
     }
 }

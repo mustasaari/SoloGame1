@@ -19,6 +19,7 @@ public class CheeseScript : MonoBehaviour {
             transform.localScale -= new Vector3(1f, 1f, 1f);
 
             if ( transform.localScale.x < 0 || transform.localScale.y < 0 || transform.localScale.z < 0) {
+                player.GetComponent<playerScript>().setHealing(15);
                 Destroy(gameObject);
             }
         }
