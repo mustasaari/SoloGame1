@@ -23,6 +23,11 @@ public class playerScript : MonoBehaviour {
     Vector3 cameraRightEyePos;
 
     int healing;
+    int damageCooldown;
+    bool walkSoundCooldown;
+    public GameObject walkSoundPrefab;
+    public GameObject damageSoundPrefab;
+    public GameObject eatSoundPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -38,6 +43,9 @@ public class playerScript : MonoBehaviour {
 
         healing = 0;
         InvokeRepeating("healer", 1f, 0.2f);
+        InvokeRepeating("walkSound", 0.1f, 0.25f);
+        walkSoundCooldown = false;
+        damageCooldown = 0;
 	}
 
     // Update is called once per frame
@@ -49,6 +57,10 @@ public class playerScript : MonoBehaviour {
         if(firstFramesMove > 0) {
             rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f);
             firstFramesMove--;
+        }
+
+        if(damageCooldown > 0) {
+            damageCooldown--;
         }
 
         //transform.Translate(Input.GetAxis("Horizontal") * 0.2f ,0, Input.GetAxis("Vertical")*0.2f );
@@ -134,6 +146,10 @@ public class playerScript : MonoBehaviour {
     public void takeDamage(int x) {
         animator.SetBool("Damage", true);
         GameManager.health = GameManager.health - x;
+        if (damageCooldown == 0) {
+            Instantiate(damageSoundPrefab, transform.position, transform.rotation);
+        }
+        damageCooldown = 5;
     }
 
     public void rotateTowards (Transform target) {
@@ -141,6 +157,10 @@ public class playerScript : MonoBehaviour {
         lookDirectionVector.z = target.position.z -transform.position.z;
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 12f);
+    }
+
+    public void bounceAway(Transform target) {
+            rb.AddForce((transform.position - target.transform.position) * 1f, ForceMode.Impulse);
     }
 
     public void healer() {
@@ -155,4 +175,21 @@ public class playerScript : MonoBehaviour {
     public void setHealing(int amount) {
         healing += amount;
     }
+
+    public void walkSound() {
+        if (walkSoundCooldown) {
+            walkSoundCooldown = false;
+        }
+        else {
+            walkSoundCooldown = true;
+            if (rb.velocity.magnitude > 4f) {
+                Instantiate(walkSoundPrefab, transform.position, transform.rotation);
+            }
+        }
+    }
+
+    public void eatCheeseSound() {
+        Instantiate(eatSoundPrefab, transform.position, transform.rotation);
+    }
+
 }

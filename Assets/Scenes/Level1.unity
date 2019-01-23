@@ -1250,6 +1250,24 @@ Prefab:
       value: 
       objectReference: {fileID: 1657855640298166, guid: 33b2c2b6256d4b94da38ba7a13724ac8,
         type: 2}
+    - target: {fileID: 114612653959914078, guid: 4f74a33aae9abdf48bef99d517a6e358,
+        type: 2}
+      propertyPath: walkSoundPrefab
+      value: 
+      objectReference: {fileID: 1590651033320424, guid: 951ed19fbfe805c408d4d83f45f4e7d4,
+        type: 2}
+    - target: {fileID: 114612653959914078, guid: 4f74a33aae9abdf48bef99d517a6e358,
+        type: 2}
+      propertyPath: damageSoundPrefab
+      value: 
+      objectReference: {fileID: 1145798872801384, guid: cc51a3832d105bc4bbef259e84bac652,
+        type: 2}
+    - target: {fileID: 114612653959914078, guid: 4f74a33aae9abdf48bef99d517a6e358,
+        type: 2}
+      propertyPath: eatSoundPrefab
+      value: 
+      objectReference: {fileID: 1010837779675926, guid: 3fee43c2adbeb314996edc426cee775d,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4f74a33aae9abdf48bef99d517a6e358, type: 2}
   m_IsPrefabParent: 0
@@ -10754,7 +10772,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4887808592548050, guid: 8fa6305415b2cb34ea1e68ece13da82d, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.6605911
+      value: 8.13
       objectReference: {fileID: 0}
     - target: {fileID: 4887808592548050, guid: 8fa6305415b2cb34ea1e68ece13da82d, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10762,7 +10780,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4887808592548050, guid: 8fa6305415b2cb34ea1e68ece13da82d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4887808592548050, guid: 8fa6305415b2cb34ea1e68ece13da82d, type: 2}
       propertyPath: m_LocalRotation.x

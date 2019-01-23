@@ -28,6 +28,7 @@ public class CheeseScript : MonoBehaviour {
     private void OnCollisionEnter(Collision collision) {
         if (collision.gameObject.tag == "Player") {
             player = collision.gameObject;
+            player.GetComponent<playerScript>().eatCheeseSound();
             GetComponent<BoxCollider>().enabled = false;
             GetComponent<Rigidbody>().isKinematic = true;
             eaten = true;
