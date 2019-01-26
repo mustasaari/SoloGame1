@@ -26,6 +26,8 @@ public class Enemy1 : MonoBehaviour {
     bool isAlive;
     int rimpuilu;
 
+    private float MyDeltaTime;
+
     Animator animator;
     public GameObject Audio_Splat;
 
@@ -45,6 +47,9 @@ public class Enemy1 : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        MyDeltaTime = Time.deltaTime * 60;
+
         rightEyeSeesWall = false;
         leftEyeSeesWall = false;
         rightEyeSeesGround = false;
@@ -212,8 +217,8 @@ public class Enemy1 : MonoBehaviour {
             walkSpeed -= 0.001f;
         }
 
-                rb.transform.Rotate(Vector3.up * walkRotation);
-                rb.transform.Translate(Vector3.forward * walkSpeed);
+                rb.transform.Rotate(Vector3.up * walkRotation * MyDeltaTime);
+                rb.transform.Translate(Vector3.forward * walkSpeed * MyDeltaTime);
 
 
             //transform.Rotate(Vector3.up * walkRotation);

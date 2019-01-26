@@ -29,6 +29,8 @@ public class playerScript : MonoBehaviour {
     public GameObject damageSoundPrefab;
     public GameObject eatSoundPrefab;
 
+    private float MyDeltaTime;
+
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
@@ -51,11 +53,13 @@ public class playerScript : MonoBehaviour {
     // Update is called once per frame
     void Update() {
 
+        MyDeltaTime = Time.deltaTime * 60;
+
         cameraLeftEye.transform.position = transform.position + cameraLeftEyePos;
         cameraRightEye.transform.position = transform.position + cameraRightEyePos;
 
         if(firstFramesMove > 0) {
-            rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f);
+            rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f * MyDeltaTime);        //DELTA
             firstFramesMove--;
         }
 
@@ -74,7 +78,7 @@ public class playerScript : MonoBehaviour {
                 movementVector = Quaternion.Euler(0, -45, 0) * movementVector;
 
 
-                rb.AddForce(movementVector, ForceMode.Impulse);
+                rb.AddForce(movementVector * MyDeltaTime, ForceMode.Impulse);           //DELTA
 
 
                 //rb.AddForce(new Vector3(Input.GetAxis("Horizontal") * keyboardForcesWalk, 0, Input.GetAxis("Vertical") * keyboardForcesWalk), ForceMode.Impulse);
@@ -85,7 +89,7 @@ public class playerScript : MonoBehaviour {
                 lookDirectionVector.z = rb.velocity.z;
 
 
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 7f);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 7f * MyDeltaTime);          //DELTA
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0, rb.velocity.z)), 7f);
             }
 
@@ -120,16 +124,16 @@ public class playerScript : MonoBehaviour {
 
             if (x.transform.gameObject.tag == "Enemy") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10 ,directionVector.z), ForceMode.Impulse);
+                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10 ,directionVector.z) * MyDeltaTime, ForceMode.Impulse);
             }
             if (x.transform.gameObject.tag == "DoorBreakable") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<DoorSmash>().smashDoor(new Vector3(directionVector.x, 5, directionVector.z ));
+                x.transform.gameObject.GetComponent<DoorSmash>().smashDoor(new Vector3(directionVector.x, 5, directionVector.z ) * MyDeltaTime);
             }
             if (x.transform.gameObject.tag == "Cheese") {
                 Debug.Log("JUUUSTO");
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10, directionVector.z), ForceMode.Impulse);
+                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10, directionVector.z) * MyDeltaTime, ForceMode.Impulse);
             }
         }
 
@@ -156,11 +160,11 @@ public class playerScript : MonoBehaviour {
         lookDirectionVector.x = target.position.x -transform.position.x;
         lookDirectionVector.z = target.position.z -transform.position.z;
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 12f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 12f * MyDeltaTime);
     }
 
     public void bounceAway(Transform target) {
-            rb.AddForce((transform.position - target.transform.position) * 1f, ForceMode.Impulse);
+            rb.AddForce((transform.position - target.transform.position) * 1f * MyDeltaTime, ForceMode.Impulse);
     }
 
     public void healer() {
