@@ -15,7 +15,7 @@ public class playerScript : MonoBehaviour {
 
     Camera mainCamera;
 
-    int firstFramesMove;
+    float firstFramesMove;
 
     public GameObject cameraLeftEye;
     public GameObject cameraRightEye;
@@ -38,7 +38,7 @@ public class playerScript : MonoBehaviour {
         controlsEnabled = true;
         lookDirectionVector = new Vector3(1, 0, 0);
         mainCamera = Camera.main;
-        firstFramesMove = 20;
+        firstFramesMove = 1.2f;
 
         cameraRightEyePos = new Vector3(12f , 5.5f, 0f);
         cameraLeftEyePos = new Vector3(0f, 5.5f, 12f);
@@ -58,9 +58,9 @@ public class playerScript : MonoBehaviour {
         cameraLeftEye.transform.position = transform.position + cameraLeftEyePos;
         cameraRightEye.transform.position = transform.position + cameraRightEyePos;
 
-        if(firstFramesMove > 0) {
-            rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f * MyDeltaTime);        //DELTA
-            firstFramesMove--;
+        if(firstFramesMove > 0f) {
+			rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f);        //DELTA
+			firstFramesMove = firstFramesMove - Time.deltaTime;
         }
 
         if(damageCooldown > 0) {
