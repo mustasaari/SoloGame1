@@ -14,6 +14,8 @@ public class DoorSmash : MonoBehaviour {
 
     private int hitPoints;
 
+    private float MyDeltaTime;
+
 	// Use this for initialization
 	void Start () {
         entropy = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
@@ -23,7 +25,7 @@ public class DoorSmash : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        MyDeltaTime = Time.deltaTime * 60;
 	}
 
     private void OnCollisionEnter(Collision collision) {
@@ -35,7 +37,7 @@ public class DoorSmash : MonoBehaviour {
         if (barrelLidCode) {
             barrel();
         }
-        GetComponent<Rigidbody>().AddForce(directionVector * Random.Range(0.5f , 1f) +entropy, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce((directionVector * Random.Range(0.5f , 1f) +entropy) * MyDeltaTime, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -44,7 +46,7 @@ public class DoorSmash : MonoBehaviour {
                 barrel();
             }
             GetComponent<Rigidbody>().isKinematic = false;
-            GetComponent<Rigidbody>().AddForce((transform.position - other.gameObject.transform.position) *2f, ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce((transform.position - other.gameObject.transform.position) *2f * MyDeltaTime, ForceMode.Impulse);
             Instantiate(Audio_Bum, transform.position, transform.rotation);
             reduceHP();
         }
