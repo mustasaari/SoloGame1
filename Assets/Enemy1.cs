@@ -37,7 +37,7 @@ public class Enemy1 : MonoBehaviour {
         leftEye = this.gameObject.transform.GetChild(0).gameObject;
         rightEye = this.gameObject.transform.GetChild(1).gameObject;
         walkRotation = 0.0f;
-        defaultWalkSpeed = 0.04f;
+        defaultWalkSpeed = 0.055f;
         walkSpeed = defaultWalkSpeed;
         betterTurnRight = false;
         animator = GetComponentInChildren<Animator>();

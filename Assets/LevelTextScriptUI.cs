@@ -17,7 +17,7 @@ public class LevelTextScriptUI : MonoBehaviour {
         fadein = true;
         text = GetComponent<Text>();
         levelNumber = SceneManager.GetActiveScene().buildIndex;
-        levelNumber++;
+        //levelNumber++;
         text.text = "Level " +levelNumber;
         countdown = 0.0f;
     }
