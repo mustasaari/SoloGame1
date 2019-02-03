@@ -59,7 +59,7 @@ public class playerScript : MonoBehaviour {
         cameraRightEye.transform.position = transform.position + cameraRightEyePos;
 
         if(firstFramesMove > 0f) {
-			rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 27f);        //DELTA
+			//rb.AddForce( Quaternion.Euler(0, transform.eulerAngles.y ,0) * Vector3.forward * 10f);        //DELTA
 			firstFramesMove = firstFramesMove - Time.deltaTime;
         }
 
@@ -194,6 +194,10 @@ public class playerScript : MonoBehaviour {
 
     public void eatCheeseSound() {
         Instantiate(eatSoundPrefab, transform.position, transform.rotation);
+    }
+
+    public void pushtoFacingDirection() {
+        rb.AddForce(Quaternion.Euler(0, transform.eulerAngles.y, 0) * Vector3.forward * 10f);
     }
 
 }
