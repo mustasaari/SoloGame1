@@ -18,7 +18,7 @@ public class DoorSmash : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        entropy = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
+        entropy = new Vector3(Random.Range(-1, 1), 0, Random.Range(-3, 3));
         Audio_Bum = (GameObject) Resources.Load("Audio_Bum", typeof(GameObject));
         hitPoints = 50;
     }
@@ -37,11 +37,11 @@ public class DoorSmash : MonoBehaviour {
         if (barrelLidCode) {
             barrel();
         }
-        GetComponent<Rigidbody>().AddForce((directionVector * Random.Range(0.5f , 1f) +entropy) * MyDeltaTime, ForceMode.Impulse);
+		GetComponent<Rigidbody>().AddForce((directionVector * Random.Range(0.5f , 1f) + (entropy * MyDeltaTime)) * MyDeltaTime, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag == "Sword") {
+        if (other.gameObject.tag == "Sword") { 
             if (barrelLidCode) {
                 barrel();
             }

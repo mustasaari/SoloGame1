@@ -124,16 +124,16 @@ public class playerScript : MonoBehaviour {
 
             if (x.transform.gameObject.tag == "Enemy") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10 ,directionVector.z) * MyDeltaTime, ForceMode.Impulse);
+                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10 ,directionVector.z), ForceMode.Impulse);
             }
             if (x.transform.gameObject.tag == "DoorBreakable") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<DoorSmash>().smashDoor(new Vector3(directionVector.x, 5, directionVector.z ) * MyDeltaTime);
+                x.transform.gameObject.GetComponent<DoorSmash>().smashDoor(new Vector3(directionVector.x, 5, directionVector.z ));
             }
             if (x.transform.gameObject.tag == "Cheese") {
                 Debug.Log("JUUUSTO");
                 directionVector = x.transform.gameObject.transform.position - transform.position;
-                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10, directionVector.z) * MyDeltaTime, ForceMode.Impulse);
+                x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10, directionVector.z), ForceMode.Impulse);
             }
         }
 
