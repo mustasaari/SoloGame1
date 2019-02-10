@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
     public static int health = 100;
+    public static int cheeses = 0;
 
     private static bool gameStart = true;
 
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour {
         }
 
 
+    }
+
+    public void gotCheese() {
+        cheeses++;
     }
 
 }
