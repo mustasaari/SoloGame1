@@ -28,4 +28,8 @@ public class exitgame : MonoBehaviour {
     public void OnMouseDown() {
         Application.Quit();
     }
+
+    private void OnMouseOver() {
+        exitLabel.GetComponent<TextFader>().lightUp();
+    }
 }

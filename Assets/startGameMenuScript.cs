@@ -63,4 +63,8 @@ public class startGameMenuScript : MonoBehaviour {
         fadeStart.GetComponent<TextFader>().startFade();
         fadeExit.GetComponent<TextFader>().startFade();
     }
+
+    private void OnMouseOver() {
+        fadeStart.GetComponent<TextFader>().lightUp();
+    }
 }
