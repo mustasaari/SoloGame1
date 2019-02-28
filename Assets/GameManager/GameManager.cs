@@ -24,4 +24,10 @@ public class GameManager : MonoBehaviour {
         cheeses++;
     }
 
+    public static void resetManager() {
+        health = 100;
+        cheeses = 0;
+        gameStart = true;
+    }
+
 }

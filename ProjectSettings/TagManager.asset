@@ -12,6 +12,8 @@ TagManager:
   - DoorBreakable
   - StairsUp
   - Cheese
+  - BugWall
+  - Ghost
   layers:
   - Default
   - TransparentFX

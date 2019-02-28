@@ -26,7 +26,7 @@ public class CameraRaycaster : MonoBehaviour {
 
             Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
 
-            Debug.Log("Camera Eye : " +hit.transform.gameObject.tag);
+            //Debug.Log("Camera Eye : " +hit.transform.gameObject.tag);
 
             if (hit.transform.gameObject.tag == "Player") {
                 imSeeingPlayer = true;

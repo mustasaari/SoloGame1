@@ -18,6 +18,7 @@ public class AnimaationLoppu : StateMachineBehaviour {
 	override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex) {
         animator.SetBool("Attack", false);
         animator.SetBool("Spell", false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<playerScript>().enableControls(true);
 	}
 
 	// OnStateMove is called right after Animator.OnAnimatorMove(). Code that processes and affects root motion should be implemented here

@@ -1501,7 +1501,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 1
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!102 &486849407
 TextMesh:
@@ -1911,8 +1911,8 @@ MeshRenderer:
   m_GameObject: {fileID: 699656670}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2243,6 +2243,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -594.385
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
   m_IsPrefabParent: 0
@@ -2312,6 +2316,10 @@ Prefab:
     - target: {fileID: 400000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -93.074005
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
@@ -2502,6 +2510,14 @@ Prefab:
     - target: {fileID: 100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
       propertyPath: m_Name
       value: kuusi2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
@@ -2700,6 +2716,10 @@ Prefab:
     - target: {fileID: 400000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -660.037
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
@@ -2904,8 +2924,8 @@ MeshRenderer:
   m_GameObject: {fileID: 1178399381}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -4595,6 +4615,10 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -660.041
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ab7c287d32cc4543b0eedae0eb9fb01, type: 3}
   m_IsPrefabParent: 0
@@ -5442,7 +5466,7 @@ MeshRenderer:
   m_GameObject: {fileID: 2118762515}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1

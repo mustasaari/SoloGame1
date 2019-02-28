@@ -91,7 +91,7 @@ public class Enemy1 : MonoBehaviour {
         leftEyeDistance = hit.distance;
 
         if (Physics.Raycast(rightEye.transform.position, rightEye.transform.TransformDirection(Vector3.forward), out hit, 10f)) {
-            Debug.Log(hit.transform.gameObject.tag);
+            //Debug.Log(hit.transform.gameObject.tag);
             Debug.DrawRay(rightEye.transform.position, rightEye.transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
             if (hit.transform.gameObject.tag == "Player") {
                 rightEyeSeesPlayer = true;

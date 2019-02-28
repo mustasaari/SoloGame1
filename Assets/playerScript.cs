@@ -13,7 +13,7 @@ public class playerScript : MonoBehaviour {
 
     Vector3 lookDirectionVector;
 
-    Camera mainCamera;
+    //Camera mainCamera;
 
     float firstFramesMove;
 
@@ -37,7 +37,7 @@ public class playerScript : MonoBehaviour {
         animator = GetComponentInChildren<Animator>();
         controlsEnabled = true;
         lookDirectionVector = new Vector3(1, 0, 0);
-        mainCamera = Camera.main;
+        //mainCamera = Camera.main;
         firstFramesMove = 1.2f;
 
         cameraRightEyePos = new Vector3(12f , 5.5f, 0f);
@@ -68,7 +68,7 @@ public class playerScript : MonoBehaviour {
         }
 
         //transform.Translate(Input.GetAxis("Horizontal") * 0.2f ,0, Input.GetAxis("Vertical")*0.2f );
-        Debug.Log(GameManager.health);
+        //Debug.Log(GameManager.health);
 
         if (controlsEnabled) {
 
@@ -83,6 +83,18 @@ public class playerScript : MonoBehaviour {
 
                 //rb.AddForce(new Vector3(Input.GetAxis("Horizontal") * keyboardForcesWalk, 0, Input.GetAxis("Vertical") * keyboardForcesWalk), ForceMode.Impulse);
             }
+            else {  //jos playerilla on liikaa nopeutta niin miten kontrollit toimii
+                movementVector = new Vector3(Input.GetAxis("Horizontal") * keyboardForcesWalk, 0, Input.GetAxis("Vertical") * keyboardForcesWalk);
+                movementVector = Quaternion.Euler(0, -45, 0) * movementVector;
+
+                if (Vector3.Dot(GetComponent<Rigidbody>().velocity , movementVector ) < 0) {
+                    Debug.Log("The other transform is behind me!");
+                    rb.AddForce(movementVector * MyDeltaTime * 4f, ForceMode.Impulse);           //DELTA
+                }
+
+            }
+
+
             //transform.rotation = Quaternion.LookRotation(rb.velocity);
             if (rb.velocity.magnitude > 0.001f) {
                 lookDirectionVector.x = rb.velocity.x;
@@ -91,11 +103,6 @@ public class playerScript : MonoBehaviour {
 
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(lookDirectionVector), 7f * MyDeltaTime);          //DELTA
                 //transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(new Vector3(rb.velocity.x, 0, rb.velocity.z)), 7f);
-            }
-
-            if (Input.GetButtonDown("Jump")) {
-                Debug.Log("Jump");
-            //rb.AddForce(Vector3.up * 10f, ForceMode.Impulse);
             }
         }
         else {
@@ -120,20 +127,26 @@ public class playerScript : MonoBehaviour {
 
         hit = Physics.SphereCastAll(transform.position, 4f, transform.forward, 12f);
         Vector3 directionVector;
-        foreach (RaycastHit x in hit) {
+        foreach (RaycastHit x in hit) {     //Spell osuu eri asioihin
 
             if (x.transform.gameObject.tag == "Enemy") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
                 x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10 ,directionVector.z), ForceMode.Impulse);
             }
-            if (x.transform.gameObject.tag == "DoorBreakable") {
+            else if (x.transform.gameObject.tag == "DoorBreakable") {
                 directionVector = x.transform.gameObject.transform.position - transform.position;
                 x.transform.gameObject.GetComponent<DoorSmash>().smashDoor(new Vector3(directionVector.x, 5, directionVector.z ));
             }
-            if (x.transform.gameObject.tag == "Cheese") {
-                Debug.Log("JUUUSTO");
+            else if (x.transform.gameObject.tag == "Cheese") {
+                //Debug.Log("JUUUSTO");
                 directionVector = x.transform.gameObject.transform.position - transform.position;
                 x.transform.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(directionVector.x, 10, directionVector.z), ForceMode.Impulse);
+            }
+            else if (x.transform.gameObject.tag == "BugWall") {
+                x.transform.gameObject.GetComponent<BugWall>().spellHits();
+            }
+            else if (x.transform.gameObject.tag == "Ghost") {
+                x.transform.gameObject.GetComponent<GhostScript>().runAway();
             }
         }
 
