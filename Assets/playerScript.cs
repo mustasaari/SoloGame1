@@ -51,7 +51,8 @@ public class playerScript : MonoBehaviour {
 	}
 
     // Update is called once per frame
-    void Update() {
+    //void Update() {
+        void FixedUpdate() {
 
         MyDeltaTime = Time.deltaTime * 60;
 

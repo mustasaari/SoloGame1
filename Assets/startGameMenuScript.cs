@@ -25,9 +25,9 @@ public class startGameMenuScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (dim) {
-            valo.intensity = valo.intensity -0.1f;
-            torch1.intensity = torch1.intensity -0.05f;
-            torch2.intensity = torch2.intensity  -0.05f;
+            valo.intensity = valo.intensity -0.1f * Time.deltaTime * 60;
+            torch1.intensity = torch1.intensity -0.05f * Time.deltaTime * 60;
+            torch2.intensity = torch2.intensity  -0.05f * Time.deltaTime * 60;
         }
 
         if (valo.intensity <= 0) {

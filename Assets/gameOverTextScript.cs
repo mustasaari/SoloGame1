@@ -24,7 +24,7 @@ public class gameOverTextScript : MonoBehaviour {
 	void Update () {
 
         if ( player.GetComponentInChildren<AnimScript>().playerDied() ) {
-            color.a += 0.003f;
+            color.a += 0.003f * Time.deltaTime * 60;
             text.color = color;
         }
         if (color.a >= 0.8f) {

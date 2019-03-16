@@ -23,7 +23,7 @@ public class RestartTextScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (enabled) {
-            color.a += 0.01f;
+            color.a += 0.01f * Time.deltaTime * 60;
             text.color = color;
 
             if (Input.GetButton("Fire1")) {

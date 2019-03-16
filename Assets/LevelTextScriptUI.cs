@@ -26,11 +26,11 @@ public class LevelTextScriptUI : MonoBehaviour {
 	void Update () {
         if (fadein) {
             text.color = new Color(1, 1, 0, countdown);
-            countdown += 0.01f;
+            countdown += 0.01f * Time.deltaTime * 60;
         }
         else {
             text.color = new Color(1, 1, 0, countdown);
-            countdown -= 0.005f;
+            countdown -= 0.005f *Time.deltaTime * 60;
         }
 
         if (text.color.a >= 1) {
