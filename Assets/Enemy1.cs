@@ -46,7 +46,7 @@ public class Enemy1 : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 
         MyDeltaTime = Time.deltaTime * 60;
 
