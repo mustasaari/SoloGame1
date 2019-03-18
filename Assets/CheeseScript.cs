@@ -16,7 +16,7 @@ public class CheeseScript : MonoBehaviour {
 	void Update () {
 		if (eaten) {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 0.1f);
-            transform.localScale -= new Vector3(1f, 1f, 1f);
+            transform.localScale -= new Vector3(1f, 1f, 1f) * Time.deltaTime * 60;
 
             if ( transform.localScale.x < 0 || transform.localScale.y < 0 || transform.localScale.z < 0) {
                 player.GetComponent<playerScript>().setHealing(15);

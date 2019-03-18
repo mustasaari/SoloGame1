@@ -20,7 +20,7 @@ public class DoorSmash : MonoBehaviour {
 	void Start () {
         entropy = new Vector3(Random.Range(-1, 1), 0, Random.Range(-3, 3));
         Audio_Bum = (GameObject) Resources.Load("Audio_Bum", typeof(GameObject));
-        hitPoints = 50;
+        hitPoints = 20;
     }
 	
 	// Update is called once per frame

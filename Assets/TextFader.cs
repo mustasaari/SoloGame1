@@ -28,8 +28,9 @@ public class TextFader : MonoBehaviour {
         }
 
         if (fade) {
-            alpha = (alpha - 0.02f) * Time.deltaTime * 60;
+            alpha = alpha - (0.02f * Time.deltaTime * 60);
         }
+
         GetComponent<TextMesh>().color = new Color(red + lightup, green + lightup, blue, alpha);
 
     }
@@ -40,7 +41,7 @@ public class TextFader : MonoBehaviour {
 
     public void lightUp() {
         if (lightup < 1 - green && lightup < 1 -red) {
-                lightup = (lightup + 0.04f) * Time.deltaTime *60;
+                lightup = lightup  +(0.04f * Time.deltaTime *60);
         }
     }
 }

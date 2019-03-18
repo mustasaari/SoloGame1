@@ -16,8 +16,6 @@ public class GameManager : MonoBehaviour {
             health = 100;
             gameStart = false;
         }
-
-
     }
 
     public void gotCheese() {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerScript : MonoBehaviour {
 
@@ -66,6 +67,10 @@ public class playerScript : MonoBehaviour {
 
         if(damageCooldown > 0) {
             damageCooldown--;
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            SceneManager.LoadScene("menu");
         }
 
         //transform.Translate(Input.GetAxis("Horizontal") * 0.2f ,0, Input.GetAxis("Vertical")*0.2f );
