@@ -229,6 +229,12 @@ public class Enemy1 : MonoBehaviour {
             animator.SetBool("Eat", false);
         }
 
+        if (!isAlive && transform.position.y <2) {
+            rb.isKinematic = true;
+            GetComponent<BoxCollider>().enabled = false;
+            transform.Translate(Vector3.down * Time.deltaTime * 0.02f);
+        }
+
 
     }
 
